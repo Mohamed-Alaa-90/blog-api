@@ -1,5 +1,6 @@
 import Post from "../models/post.model.js";
 import mongoose from "mongoose";
+import { sendError, sendSuccess } from "../utils/response.js";
 
 export const createPost = async (req, res) => {
   const { title, content } = req.body;
@@ -9,47 +10,29 @@ export const createPost = async (req, res) => {
     content,
   });
 
-  return res.status(201).json({
-    status: "success",
-    message: "Post created successfully",
-    data: newPost,
-  });
+  return sendSuccess(res, 201, "Post created successfully", newPost);
 };
 
 export const getPosts = async (req, res) => {
   const posts = await Post.find();
 
-  return res.status(200).json({
-    status: "success",
-    message: "Posts retrieved successfully",
-    data: posts,
-  });
+  return sendSuccess(res, 200, "Posts fetched successfully", posts);
 };
 
 export const getPostById = async (req, res) => {
   const { id } = req.params;
 
   if (!mongoose.isValidObjectId(id)) {
-    return res.status(400).json({
-      status: "error",
-      message: "Invalid Post Id",
-    });
+    return sendError(res, 400, "Invalid Post Id");
   }
 
   const post = await Post.findById(id);
 
   if (!post) {
-    return res.status(404).json({
-      status: "error",
-      message: "Post Not Found",
-    });
+    return sendError(res, 404, "Post Not Found");
   }
 
-  return res.status(200).json({
-    status: "success",
-    message: "Post fetched successfully",
-    data: post,
-  });
+  return sendSuccess(res, 200, "Post fetched successfully", post);
 };
 
 export const updatePost = async (req, res) => {
@@ -57,40 +40,27 @@ export const updatePost = async (req, res) => {
   const updates = req.body;
 
   if (!mongoose.isValidObjectId(id)) {
-    return res.status(400).json({
-      status: "error",
-      message: "Invalid Post Id",
-    });
+    return sendError(res, 400, "Invalid Post Id");
   }
 
   const post = await Post.findById(id);
 
   if (!post) {
-    return res.status(404).json({
-      status: "error",
-      message: "Post Not Found",
-    });
+    return sendError(res, 404, "Post Not Found");
   }
 
   post.set(updates);
 
   await post.save();
 
-  return res.status(200).json({
-    status: "success",
-    message: "Post updated successfully",
-    data: post,
-  });
+  return sendSuccess(res, 200, "Post updated successfully", post);
 };
 
 export const deletePost = async (req, res) => {
   const { id } = req.params;
 
   if (!mongoose.isValidObjectId(id)) {
-    return res.status(400).json({
-      status: "error",
-      message: "Invalid Post Id",
-    });
+    return sendError(res, 400, "Invalid Post Id");
   }
 
   const result = await Post.deleteOne({
@@ -98,14 +68,8 @@ export const deletePost = async (req, res) => {
   });
 
   if (result.deletedCount === 0) {
-    return res.status(404).json({
-      status: "error",
-      message: "Post Not Found",
-    });
+    return sendError(res, 404, "Post Not Found");
   }
 
-  return res.status(200).json({
-    status: "success",
-    message: "Post deleted successfully",
-  });
+  return sendSuccess(res, 200, "Post deleted successfully");
 };

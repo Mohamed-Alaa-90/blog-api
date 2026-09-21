@@ -1,5 +1,6 @@
 import express from "express";
 import postsRouter from "./routes/posts.routes.js";
+import { errorHandler } from "./middlewares/error.middleware.js";
 const app = express();
 
 app.use(express.json());
@@ -11,5 +12,7 @@ app.get("/api/health", (req, res) => {
     message: "Blog Api is Running!",
   });
 });
+
+app.use(errorHandler);
 
 export default app;
