@@ -6,16 +6,15 @@ export const validate = (schema) => {
       return next();
     }
 
-    const errors = result.error.flatten().fieldErrors;
-
-    const formattedErrors = Object.fromEntries(
-      Object.entries(errors).map(([field, messages]) => [field, messages[0]]),
-    );
+    const errors = result.error.flatten();
 
     return res.status(400).json({
       status: "error",
       message: "Validation failed",
-      errors: formattedErrors,
+      errors: {
+        ...errors.fieldErrors,
+        form: errors.formErrors,
+      },
     });
   };
 };
