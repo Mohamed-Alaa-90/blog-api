@@ -50,6 +50,9 @@ export const login = async (req, res) => {
     user: userResponse,
   });
 };
+export const logout = async (req, res) => {
+  return sendSuccess(res, 200, "Logout successful");
+};
 export const getMe = async (req, res) => {
   const userResponse = req.user.toObject();
 
