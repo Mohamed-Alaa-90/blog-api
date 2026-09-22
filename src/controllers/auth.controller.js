@@ -50,3 +50,10 @@ export const login = async (req, res) => {
     user: userResponse,
   });
 };
+export const getMe = async (req, res) => {
+  const userResponse = req.user.toObject();
+
+  delete userResponse.password;
+
+  return sendSuccess(res, 200, "User fetched successfully", userResponse);
+};
