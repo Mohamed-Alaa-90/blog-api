@@ -6,12 +6,15 @@ info:
 http:
   method: POST
   url: http://localhost:3000/api/posts/
+  headers:
+    - name: Authorization
+      value: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjZhYjBhZWUxNTFhNDljNTViOWUzYjM2MSIsImVtYWlsIjoibW9oYW1lZEBnZW1haWwuY29tIiwiaWF0IjoxNzkwMDQ1NDM5LCJleHAiOjE3OTA2NTAyMzl9.yvcJI6RZdmgtgaEEEsyidByiYOMRj1_8wEXkoPaIjqQ
   body:
     type: json
     data: |-
       {
-        "title": "My First Post",
-        "content": "Hello World"
+        "title": "test post",
+        "content": "Hello it Test post"
       }
   auth: inherit
 

@@ -8,6 +8,7 @@ export const createPost = async (req, res) => {
   const newPost = await Post.create({
     title,
     content,
+    userId: req.user._id,
   });
 
   return sendSuccess(res, 201, "Post created successfully", newPost);
