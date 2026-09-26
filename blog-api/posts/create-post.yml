@@ -8,7 +8,7 @@ http:
   url: http://localhost:3000/api/posts/
   headers:
     - name: Authorization
-      value: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjZhYjBhZWUxNTFhNDljNTViOWUzYjM2MSIsImVtYWlsIjoibW9oYW1lZEBnZW1haWwuY29tIiwiaWF0IjoxNzkwMDQ1NDM5LCJleHAiOjE3OTA2NTAyMzl9.yvcJI6RZdmgtgaEEEsyidByiYOMRj1_8wEXkoPaIjqQ
+      value: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjZhYjc2ZjM4NzUyM2ExMzk4MGJiZDYzZiIsImVtYWlsIjoidGVzdEBnZW1haWwuY29tIiwiaWF0IjoxNzkwNDA2NTI2LCJleHAiOjE3OTEwMTEzMjZ9.8RVvruE_XhV99paFYS69GZq6xdnXDSNZ--fQJMMi268
   body:
     type: json
     data: |-

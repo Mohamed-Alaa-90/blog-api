@@ -1,0 +1,24 @@
+info:
+  name: create-comment
+  type: http
+  seq: 1
+
+http:
+  method: POST
+  url: http://localhost:3000/api/posts/6ab76fa9c6324ef96694ee63/comments/
+  headers:
+    - name: Authorization
+      value: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjZhYjBhZWUxNTFhNDljNTViOWUzYjM2MSIsImVtYWlsIjoibW9oYW1lZEBnZW1haWwuY29tIiwiaWF0IjoxNzkwMTI0MDM5LCJleHAiOjE3OTA3Mjg4Mzl9.BSpnGTzuNOYYpmiGgCtj2Uk3acl_FkjpQdoYe-0jTN4
+  body:
+    type: json
+    data: |-
+      {
+        "content":"Welcome"
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
